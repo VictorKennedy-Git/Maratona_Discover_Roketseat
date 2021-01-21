@@ -1,0 +1,22 @@
+-->AULA 1:
+	HTML:
+		GUIA ESTELAR DE HTML;
+		HTML QUE FAZ SENTIDO PARA TODOS;
+
+			Posso ver e ouvir html;
+			Formularios de outro planeta;
+			Nem só de classes e ID's é o CSS3.	
+	CSS:
+		GUIA ESTELAR DE CSS;
+		NEM TUDO SÃO PIXELS; !IMPORTANT;
+		UMA CAIXA DENTRO DA OUTRA;
+		APP BONITO ATÉ NOS TEXTOS;
+
+	GUIA ESTELAR DE HTTP:
+		ENTENDENDO:
+			Visão geral;
+			Vizualizando Comunicação.
+
+		CONCEITOS;
+		URI.
+
