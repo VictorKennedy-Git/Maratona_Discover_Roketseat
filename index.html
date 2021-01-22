@@ -17,41 +17,56 @@
 </head>
 <body>	
 	<header>
-		<h1 id="logo">dev.finance$</h1>
+		<img src="./assets/logo.svg" alt="Logo Dev Finance">
+
 	</header>
 
+
+	
 	<main class="container">
+
 		<section id="balance">
 			
-			<h2 class="">Balanço</h2>
+			<h2 class="sr-only ">Balanço</h2>
 			
 			<div class="card">
 				
-				<h3>Entradas</h3>
+				<h3>
+					<span>Entradas</span>	
+					<img src="./assets/income.svg" alt="Imagem de Entradas">
+				</h3>
+					
 				<p>R$ 5.000,00</p>
 			
 			</div>
 			
 			<div class="card">
-
-				<h3>Saídas</h3>
-				<p>R$ 2.000,00</p>
-			
+				<h3>
+					<span>Saídas</span>	
+					<img src="./assets/expense.svg" alt="Imagem de Entradas">
+				</h3>
+				
+				<p>R$ 5.000,00</p>
 			</div>
 			
 			<div class="card total">
 				
-				<h3>Total</h3>
-				<p>R$ 3.000,00</p>			
+				<h3>
+					<span>Total</span>	
+					<img src="./assets/total.svg" alt="Imagem de Entradas">
+				</h3>
 			
+				<p>R$ 5.000,00</p>
 			</div>
 	
 		</section>
 		
 		<section id="transaction">
 			
-			<h2 class="">Transações</h2>
+			<h2 class="sr-only">Transações</h2>
 
+			<a href="#" class="button new" onclick="Modal.open()">+ Nova Transação</a>
+			
 			<table id="data-table">
 				
 				<thead>
@@ -59,6 +74,7 @@
 							<th>Descriçaõ</th> 
 							<th>Valor</th>
 							<th>Data<!--Conteudo--></th>
+							<th></th>
 				   	</tr><!--LINHA-->
 				</thead>
 
@@ -67,18 +83,21 @@
 							<td class="description">Site</td>
 							<td class="expense">R$1000</td>	
 							<td class="date">09/10/2021</td>
+							<td><img src="assets/minus.svg" alt="Remover Transação"></td>
 						</tr>
 						
 						<tr>
 							<td class="description">Comida</td>
 							<td class="income">R$1.000,00</td>
 							<td class="date">09/10/2021</td>
+							<td><img src="assets/minus.svg" alt="Remover Transação"></td>
 						</tr>
 
 						<tr>
 							<td class="description">Cartão</td>
 							<td class="expense">R$2.000,00</td>
 							<td class="date">09/10/2021</td>
+							<td><img src="assets/minus.svg" alt="Remover Transação"></td>
 						</tr>	
 				</tbody>
 			
@@ -87,9 +106,49 @@
 		</section>
 
 	</main>
-	
+			<div class="modal-overlay active">
+			<div class="modal">
+					<div id="form">
+						<h2>Nova Transação</h2>
+						<form action="">
+							<div class="input-group">
+								<label for="description" class="sr-only">
+									Descrição
+								</label>
+								<input type="text" placeholder="Descrição" id="description" name="description">
+							</div>
+
+							<div class="input-group">
+								<label for="amaout" class="sr-only">
+									Descrição
+								</label>
+								<input type="number" placeholder="0,00" id="amaout" name="amaout" step="0.01">
+								<!-- BOTE NAME E ID PARA LINKAR COM JS, NAME SERVE PARA PEGAR O DADO DO FORM-->
+								<small class="sr-only">Use o sinal menos para despesas e , (vígula) para casas dcimais</small>
+							</div>
+
+							<div class="input-group">
+								<label for="date" class="sr-only">
+									Descrição
+								</label>
+								<input type="date" placeholder="0,00" id="date" name="date">
+								<!-- BOTE NAME E ID PARA LINKAR COM JS, NAME SERVE PARA PEGAR O DADO DO FORM-->
+								<small>Use o sinal menos para despesas e , (vígula) para casas dcimais</small>
+							</div>
+
+							<div class="input-group actions">
+								<a href="#" class="button cancel" onclick="Modal.close()">Cancelar</a>
+								<button class="button">Salvar</button><!--O PRIMEIRO BOTÃO QUE ELE ACHAR ELE VAI INTERPRETAR COMO ENVIO-->
+							</div>
+						</form>
+					</div>
+			</div>
+		</div>
 	<footer>
 		<p>dev.finance$</p>
 	</footer>
+<script src="./script.js" type="text/javascript">
+	
+</script>
 </body>
 </html>
