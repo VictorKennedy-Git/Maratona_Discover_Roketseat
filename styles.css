@@ -7,11 +7,15 @@
 html{
 	font-size: 93.75%; /*15px*/
 }
+
 :root{
 	--dark-blue: #363f5f;
 	--green: #49aa26;
+	--green-light: #5ea843;
 	--red: #e92929;
+	--red-ligth: #e84545;
 }
+
 body{
 	background: #f0f2f5;
 	font-family: 'Poppins', Sans-Serif, 'Arial', 'Roboto';
@@ -44,30 +48,53 @@ h2{
 
 /*LINKS AND BUTTON*/
 a{
-	color: #ddd705;
+	color: #49aa26;
 	text-decoration: none;
 }
 
 a:hover{
 
-	color: #49aa26;
+	color: #ddd705;
 }
 
 a.new{
-
+	margin-bottom: .8rem;
 }
 
 .button.new{
 	display: inline-block;
-	margin-bottom: .8rem;
 }
 
-button{
-	width: 100%;
+button.save{
 	height: 50px;
+	border: 1px solid var(--green);
+	cursor:pointer;
 
+	color: var(--green);
+	font-size: 1.1rem;
+}
+
+button.save:hover{
+	background: var(--green-light);
+	transition: 0.4s;
+	color: #fff;
+}
+
+.button.cancel{
+	height: 50px;
+	border: 1px solid var(--red);
+	color: var(--red);
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+}
+.button.cancel:hover{
+	background: var(--red-ligth);
 	border: none;
-	background: var(--green);
+	transition: 0.4s;
+	color: #fff;
 }
 /*HEADER ################################################*/
 header{
@@ -83,7 +110,7 @@ header h1#logo{
 
 /*Balance ################################################*/
 section#balance{
-	margin-top: -10rem;
+	margin-top: -8rem;
 }
 #balance h2{
 	color: #fff;
@@ -121,23 +148,22 @@ section#balance{
 }
 
 /*TRANSAÇÕES ################################################*/
-#transaction{
-	width: 100%;
-	/*espaçamento entre as bordas da tabela
-	no eixo horizontal e vertical*/
-	overflow-x: auto; /*Rolagem no eixo x quando for necessário,
-	usado quando algum elemento transborda no mobile*/
-}
+/*#transaction{
+	espaçamento entre as bordas da tabela
+	no eixo horizontal e vertical
+	overflow-x: auto; Rolagem no eixo x quando for necessário,
+	usado quando algum elemento transborda no mobile
+}*/
 table#data-table{
 	display: block;
-	width: 100%;
 	border-spacing: 0rem 0.5rem;
 	/*espaçamento entre as bordas da tabela
 	no eixo horizontal e vertical*/
-		overflow-x: auto;
+	overflow-x: auto;
 }
 
 table tr{
+	width: 100%;
 	background: #fff;
 	opacity: 0.7;
 }
@@ -165,6 +191,9 @@ td.expense{
 }
 
 table th{
+	display: blo
+	block;
+	width: 100%;
 	opacity: 0.6;
 
 	color: #969cb3;
@@ -182,10 +211,6 @@ table th{
 #table-data tbody tr td:last-child{
 	border-radius: 0 0.25rem  0.25 0rem;
 }
-#transection{
-
-}
-
 /*MODAL*/
 .modal-overlay{
 	width: 100%;
@@ -198,6 +223,7 @@ table th{
 	display: flex;
 	align-items: center;
 	justify-content: center;
+
 	opacity: 0;
 	visibility: hidden;
 }
@@ -228,6 +254,7 @@ table th{
 }
 
 #form form input{
+	width: 100%;
 	border: none;
 	border-radius: 0.2rem;
 
@@ -246,11 +273,12 @@ table th{
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 2rem;
 }
 
-.button.cancel{
-
-}
 /*RODAPE ################################################*/
 footer{
 	text-align: center;
@@ -274,6 +302,4 @@ footer{
 		gap: 2rem;	/*espaço entre conlunas*/
 
 	}
-
-
 }
