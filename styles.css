@@ -34,7 +34,7 @@ body{
 }	
 
 .container{
-	width: min(90vw, 800px);
+	width: 90vw;
 	margin: auto;
 }
 /*Title ################################################*/
@@ -69,6 +69,7 @@ button.save{
 	height: 50px;
 	border: 1px solid var(--green);
 	cursor:pointer;
+	background: none;
 
 	color: var(--green);
 	font-size: 1.1rem;
@@ -155,7 +156,7 @@ section#balance{
 	usado quando algum elemento transborda no mobile
 }*/
 table#data-table{
-	display: block;
+	width: 100%;;
 	border-spacing: 0rem 0.5rem;
 	/*espaçamento entre as bordas da tabela
 	no eixo horizontal e vertical*/
@@ -163,7 +164,6 @@ table#data-table{
 }
 
 table tr{
-	width: 100%;
 	background: #fff;
 	opacity: 0.7;
 }
@@ -174,6 +174,7 @@ table tr:hover{
 }
 
 table td{
+	
 	padding: 1rem 2rem;
 	font-weight: normal;
 }
@@ -191,11 +192,7 @@ td.expense{
 }
 
 table th{
-	display: blo
-	block;
-	width: 100%;
 	opacity: 0.6;
-
 	color: #969cb3;
 	padding: 1rem 2rem; 
 	border-radius: .25rem;
@@ -226,6 +223,7 @@ table th{
 
 	opacity: 0;
 	visibility: hidden;
+	z-index: 99;
 }
 
 .modal-overlay.active{
@@ -237,10 +235,11 @@ table th{
 	background: #f0f2f5;
 
 	padding: 2.4rem;
-	position: relative; 
+	position: absolute; 
 
 	width: 70%; /*ocupa 70%*/
 	max-width: 500px; /*máximo de 500px*/
+	
 }
 /*FORM################################################*/
 #form{
@@ -281,6 +280,7 @@ table th{
 
 /*RODAPE ################################################*/
 footer{
+
 	text-align: center;
 	padding: 4rem 0 2rem;
 
@@ -302,4 +302,8 @@ footer{
 		gap: 2rem;	/*espaço entre conlunas*/
 
 	}
+	.container{
+		width: 80vw;
+	}
+
 }
