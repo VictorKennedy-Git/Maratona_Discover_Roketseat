@@ -19,6 +19,7 @@ html{
 body{
 	background: #f0f2f5;
 	font-family: 'Poppins', Sans-Serif, 'Arial', 'Roboto';
+
 }
 /*CSS TRIK*/
 .sr-only{/*PARADA PARA CEGOS -- acessibilidade para leitores de tela*/
@@ -149,18 +150,18 @@ section#balance{
 }
 
 /*TRANSAÇÕES ################################################*/
-/*#transaction{
-	espaçamento entre as bordas da tabela
-	no eixo horizontal e vertical
-	overflow-x: auto; Rolagem no eixo x quando for necessário,
-	usado quando algum elemento transborda no mobile
-}*/
+#transaction{
+	width: 100%;
+	/*espaçamento entre as bordas da tabela
+	no eixo horizontal e vertical*/
+	overflow-x: auto; /*Rolagem no eixo x quando for necessário,
+	usado quando algum elemento transborda no mobile*/
+}
+
 table#data-table{
-	width: 100%;;
 	border-spacing: 0rem 0.5rem;
 	/*espaçamento entre as bordas da tabela
 	no eixo horizontal e vertical*/
-	overflow-x: auto;
 }
 
 table tr{
@@ -174,7 +175,6 @@ table tr:hover{
 }
 
 table td{
-	
 	padding: 1rem 2rem;
 	font-weight: normal;
 }
@@ -192,6 +192,7 @@ td.expense{
 }
 
 table th{
+	width: 100%;
 	opacity: 0.6;
 	color: #969cb3;
 	padding: 1rem 2rem; 
@@ -291,6 +292,11 @@ footer{
 /*RESPONSIVE*/
 /*@ =et --> et groups*/
 @media screen and (min-width: 800px){
+	table#data-table{
+		width: 100%;;
+	}
+
+
 	html{
 		font-size: 87.5%; /*quantos pixels??*/
 	}

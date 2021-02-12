@@ -10,30 +10,18 @@ const Modal = {
 		document.querySelector('.modal-overlay').classList.remove('active')
 	}
 }
+const Storage = {
+	get() {
+		return JSON.parse(localStorage.getItem("dev.finances:transactions")) || []
+	},
+
+	set(transactions) {
+		localStorage.setItem("dev.finances:transactions", JSON.stringify(transactions))
+	}
+}
 
 const Transaction = {
-	all: [
-		{
-			id: 1,
-			description: 'Site',
-			date: "09/10/2002",
-			amaout: 70000, //amaout é mais usado para dinheiro
-			//isso é 500 mas as casas decimais são formatadas com currency
-		},
-		{
-			id: 1,
-			description: 'água',
-			date: "09/10/2002",
-			amaout: -8000,
-		},
-		{
-
-			id: 1,
-			description: 'pão',
-			date: "09/10/2002",
-			amaout: -20000,
-		}
-	], //array vai receber uma lista de objetos//atalho para todas as transações
+	all: Storage.get(), //array vai receber uma lista de objetos//atalho para todas as transações
 	//refatoração
 
 	add(transactions) {
@@ -90,7 +78,6 @@ const Transaction = {
 
 //pegar as transações do meu objeto JS e colocar no HTML
 
-
 const DOM = {
 	transactionsContainer: document.querySelector('#data-table tbody'),
 
@@ -100,10 +87,13 @@ const DOM = {
 		const tr = document.createElement('tr')//croiando o tr 
 		tr.innerHTML = DOM.innerHTMLTransaction(transaction) // CHAMANDO O HTML E ADICONANDO DENTRO DO TR COM INNERHTML
 		// console.log(tr.innerHTML)
+		tr.dataset.index = index
+		//index é a posição do array
+
 		DOM.transactionsContainer.appendChild(tr)//adicionando ao tbody o filho tr criado no js
 	},//adicionar transação
 
-	innerHTMLTransaction(transactions) {
+	innerHTMLTransaction(transactions, index) {
 		const CSSclass = transactions.amaout > 0 ? "income" : "expense"//classe dinâmica
 		const amaout = Utilis.formatCurrency(transactions.amaout)
 		const html = `			
@@ -112,7 +102,7 @@ const DOM = {
 			<td class="${CSSclass}">${amaout}</td>	
 			<td class="${CSSclass}">${transactions.date}</td>
 			<td>
-				<img src="assets/minus.svg" alt="Remover Transação">
+				<img src="assets/minus.svg" onclick="Transaction.remove(${index})" alt="Remover Transação">
 			</td>
 		`
 		return html
@@ -130,9 +120,15 @@ const DOM = {
 
 const Utilis = {
 	formatAmaout(value) {
-		console.log(value)
+		value = Number(value) * 100
+		// console.log(Number(value))
+		return value
 	},
 
+	formatDate(date) {
+		const splittedDate = date.split("-")
+		return `${splittedDate[2]} / ${splittedDate[1]} / ${splittedDate[0]}`
+	},
 	formatCurrency(value) {
 		// console.log(value)
 		const signal = Number(value) < 0 ? "-" : ""//forçando o value para ser numero e veruiificação de sinal
@@ -148,15 +144,16 @@ const Utilis = {
 			style: "currency",
 			currency: "BRL"
 		})
+
 		return signal + value
 	}
 
 }//formatação de valores do amaout
 
 const Form = {
+	date: document.querySelector('input#date'),
 	description: document.querySelector('input#description'),
-	amaout: document.querySelector('input#date'),
-	date: document.querySelector('input#amaout'),
+	amaout: document.querySelector('input#amaout'),
 
 	getValues() {
 		return {
@@ -166,11 +163,11 @@ const Form = {
 		}
 	},
 
-	validateFilds() {
-		const {
+	validateFields() {
+		let {
 			description, amaout, date
 		} = Form.getValues()
-		console.log(description, amaout, date)
+		// console.log(amaout)
 		if (description.trim() === "" || amaout.trim() === "" || date.trim() === "") {
 			throw new Error("[ERRO] PREENCHA TODOS OS CAMPOS")
 		}
@@ -181,7 +178,17 @@ const Form = {
 			description, amaout, date
 		} = Form.getValues()
 		amaout = Utilis.formatAmaout(amaout)
-		console.log(amaout)
+		date = Utilis.formatDate(date)
+		return {
+			description,
+			amaout,
+			date
+		}
+	},
+	clearFields() {
+		Form.description.value = ""
+		Form.amaout.value = ""
+		Form.date.value = ""
 	},
 
 	submit(event) {
@@ -190,13 +197,17 @@ const Form = {
 		try {
 
 			//verificar se o form ta preenchido
-			// Form.validateFilds()
+			Form.validateFields()
 			//formatar os dados para salvar
-			Form.formatValues()
+			const transactions = Form.formatValues()
 			//salvar 
+			Transaction.add(transactions)
 			//apaga os dados do formulario
+			Form.clearFields()
 			//modal deve fechar
+			Modal.close()
 			//atualizar a aplicação
+			// App.reload() já tem no add
 		} catch (error) {
 			alert(error.message)
 		}
@@ -206,8 +217,8 @@ const Form = {
 const App = {
 	init() {
 		Transaction.all.forEach(
-			transactions => {
-				DOM.addTransaction(transactions)
+			(transactions, index) => {
+				DOM.addTransaction(transactions, index)
 			}
 
 		)//para cada elemento no array faça algo
@@ -217,6 +228,7 @@ const App = {
 		// DOM.addTransaction(transactions[2])
 
 		DOM.UpdateBalance()
+		Storage.set(Transaction.all)//atualizado storage
 
 	},
 	reload() {
