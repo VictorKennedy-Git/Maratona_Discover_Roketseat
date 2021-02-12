@@ -112,7 +112,7 @@ header h1#logo{
 
 /*Balance ################################################*/
 section#balance{
-	margin-top: -8rem;
+	margin-top: -7rem;
 }
 #balance h2{
 	color: #fff;
@@ -152,19 +152,23 @@ section#balance{
 /*TRANSAÇÕES ################################################*/
 #transaction{
 	width: 100%;
+	overflow-x: auto;
 	/*espaçamento entre as bordas da tabela
 	no eixo horizontal e vertical*/
-	overflow-x: auto; /*Rolagem no eixo x quando for necessário,
+	/*Rolagem no eixo x quando for necessário,
 	usado quando algum elemento transborda no mobile*/
 }
 
 table#data-table{
+	width: 100%; 
 	border-spacing: 0rem 0.5rem;
 	/*espaçamento entre as bordas da tabela
 	no eixo horizontal e vertical*/
 }
 
 table tr{
+	width: 100%;
+	white-space: nowrap;
 	background: #fff;
 	opacity: 0.7;
 }
@@ -175,8 +179,11 @@ table tr:hover{
 }
 
 table td{
+	/* width: 100%; */
+	white-space: nowrap;
 	padding: 1rem 2rem;
 	font-weight: normal;
+	word-wrap: break-word;
 }
 
 td.description{
@@ -192,7 +199,6 @@ td.expense{
 }
 
 table th{
-	width: 100%;
 	opacity: 0.6;
 	color: #969cb3;
 	padding: 1rem 2rem; 
@@ -291,11 +297,7 @@ footer{
 
 /*RESPONSIVE*/
 /*@ =et --> et groups*/
-@media screen and (min-width: 800px){
-	table#data-table{
-		width: 100%;;
-	}
-
+@media screen and (min-width: 900px){
 
 	html{
 		font-size: 87.5%; /*quantos pixels??*/
@@ -309,7 +311,6 @@ footer{
 
 	}
 	.container{
-		width: 80vw;
+		width: 900px;
 	}
-
 }
