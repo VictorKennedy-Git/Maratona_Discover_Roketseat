@@ -5,7 +5,13 @@
   </p>
 </div>
 
-
+# Projeto:
+<div>
+  <p align="center">
+    <img src="/assets/Desktop.gif"/>
+    <img src="/assets/Mobile.gif"/>
+  </p>
+</div>
 
 ## Sumário :mag:
 * [Sobre](#sobre)
