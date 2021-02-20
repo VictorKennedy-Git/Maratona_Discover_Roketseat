@@ -7,9 +7,9 @@
 
 # Projeto:
 <div>
-  <p align="center">
-    <img src="/assets/Descktop.gif"/>
+  <p>
     <img src="/assets/Mobile.gif"/>
+    <img width="650" src="/assets/Descktop.gif"/>
   </p>
 </div>
 
