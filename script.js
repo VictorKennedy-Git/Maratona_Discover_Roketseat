@@ -85,7 +85,7 @@ const DOM = {
 		// console.log('CHEGAMOS, NÃO ANTES POR CAUSA DA VÍRGULA')
 		// console.log(transaction)
 		const tr = document.createElement('tr')//croiando o tr 
-		tr.innerHTML = DOM.innerHTMLTransaction(transaction) // CHAMANDO O HTML E ADICONANDO DENTRO DO TR COM INNERHTML
+		tr.innerHTML = DOM.innerHTMLTransaction(transaction, index) // CHAMANDO O HTML E ADICONANDO DENTRO DO TR COM INNERHTML
 		// console.log(tr.innerHTML)
 		tr.dataset.index = index
 		//index é a posição do array
