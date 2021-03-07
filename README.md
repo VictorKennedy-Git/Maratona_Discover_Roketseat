@@ -16,9 +16,9 @@
 * [Sobre](#sobre)
 * [Funções](#funções)
 * [Ferramentas;](#ferramentas)
-* [Próximos passos;](#passos)
+* [Próximos passos.](#passos)
 <!--* Aprendizado;
-* Conclusão-->.
+* Conclusão-->
 
 
 <a id="sobre"></a>
@@ -51,4 +51,4 @@ A maratona Discover é ofertada pela plataforma de cursos online [Roketseat](htt
 - [ ] Base de Dados;
 - [ ] Autenticação de Usuário;
 - [ ] Modificar Marca;
-- [ ] Hospedar;
+- [ ] Hospedar.
