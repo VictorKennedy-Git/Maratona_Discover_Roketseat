@@ -1,4 +1,3 @@
-
 <div>
   <p align="center">
     <img src="/assets/logo.svg"/ width="600">
@@ -18,8 +17,8 @@
 * [Funções](#funções)
 * [Ferramentas;](#ferramentas)
 * [Próximos passos;](#passos)
-$* Aprendizado;$
-$* Conclusão.$
+<!--* Aprendizado;
+* Conclusão-->.
 
 
 <a id="sobre"></a>
