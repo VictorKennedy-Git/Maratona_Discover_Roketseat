@@ -1,9 +1,3 @@
-<div>
-  <p align="center">
-    <img src="/assets/logo.svg"/ width="600">
-  </p>
-</div>
-
 # Imagens :camera:
 <div>
   <p>
